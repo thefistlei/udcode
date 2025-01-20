@@ -10,10 +10,15 @@ First, installation ollama, then run udcode.
 .\udcode "e:/test"
 ```
 
-![GIF演示](https://github.com/thefistlei/uncode/blob/main/example.gif)
+![GIF演示](https://github.com/thefistlei/uncode/blob/main/run.gif)
+
+## Example
+![avatar](https://github.com/thefistlei/uncode/blob/main/example.jpg)
 
 ## Todo
-Current only support the source code with file extension of ".c", ".cpp" and ".py" . Support chinese and english as the explain result.
+Current only support the source code with file extension of ".c", ".cpp" and ".py" .
+
+Only Support chinese and english as the explain result.
 
 - use chinese
 ```cpp
@@ -24,6 +29,8 @@ Current only support the source code with file extension of ".c", ".cpp" and ".p
 ```cpp
 .\udcode "e:/test" 2
 ```
+
+The code files are being split at the byte level, which can cause code to be broken at arbitrary points. A more suitable approach is to split the code at the function level.
 
 
 

@@ -5,7 +5,26 @@ UD Code, powered by ollama LLM, performs automated source code analysis. It recu
 On windows, run generate_sln.bat.
 
 ## Documentation
-First, installation language model, then run udcode.
+First, installation ollama, then run udcode.
+```cpp
+.\udcode "e:/test"
+```
+
+![GIF演示](https://github.com/thefistlei/uncode/blob/main/example.gif)
+
+## Todo
+Current only support the source code with file extension of ".c", ".cpp" and ".py" . Support chinese and english as the explain result.
+
+- use chinese
+```cpp
+.\udcode "e:/test" 1
+```
+
+- use english
+```cpp
+.\udcode "e:/test" 2
+```
+
 
 
 

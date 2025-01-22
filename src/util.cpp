@@ -35,5 +35,11 @@ namespace ss::util
 
         return "";
     }
+
+    auto exe_path() -> std::string
+    {
+        std::filesystem::path current_dir = std::filesystem::current_path();
+        return current_dir.string();
+    }
 }
 

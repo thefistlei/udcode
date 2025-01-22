@@ -48,4 +48,10 @@ if(WIN32)
     else()
         message(WARNING "dll not found, skipping copy.")
     endif()
+
+    add_custom_command(TARGET udcode POST_BUILD
+    COMMAND ${CMAKE_COMMAND} -E copy_if_different
+    "${CMAKE_SOURCE_DIR}/config.json"
+    $<TARGET_FILE_DIR:udcode>/config.json
+    )
 endif()

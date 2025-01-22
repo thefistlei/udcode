@@ -52,11 +52,12 @@ namespace ss::settings
 
     auto read_file() -> bool
     {
-        std::ifstream f("../../config.json");
+        auto path = ss::util::exe_path() + "/config.json";
+        std::ifstream f(path);
         json data = json::parse(f);
 
         try {
-            config = data.get<Config_Data>();  
+            config = data.get<Config_Data>();
         } catch (const json::parse_error& e) {
             std::cerr << "JSON parse error: " << e.what() << std::endl;
             return false;

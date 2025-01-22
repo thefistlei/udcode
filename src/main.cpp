@@ -2,7 +2,6 @@
 #include "read-file.hpp"
 #include "settings.hpp"
 #include "util.hpp"
-#include <filesystem>
 #include <iostream>
 #include <string>
 
@@ -26,8 +25,7 @@ int main(int argc, char* argv[])
         str_path = outputPath;
     } else {
         // read the exe file path
-        std::filesystem::path current_dir = std::filesystem::current_path();
-        str_path = current_dir.string();
+        str_path = ss::util::exe_path();
     }
 
     auto source_file_value = ss::settings::get_source_file_value();

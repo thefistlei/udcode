@@ -16,7 +16,7 @@ First, installation [ollama](https://github.com/ollama/ollama) on local mathine,
 ## Example
 ![avatar](https://github.com/thefistlei/uncode/blob/main/example.jpg)
 
-- To support more source file type, modify the content to file config.json.
+- To support more source file type, modify the JSON Configuration File config.json.
 The key is the file extension, the value is the md code format.
 
 ```json
@@ -29,8 +29,8 @@ The key is the file extension, the value is the md code format.
     },
 ```
 
-- To support other lanuage, modify the content to file config.json.
-Add your custom lanuage name to instead for your native command to llm. And change "language_type" or it use chinese default.
+- To support other lanuage, modify the JSON Configuration File config.json.
+First, identify the custom language name with your native lanuage command thas is send to llm. Ensure the language_type is set accordingly or it will use chinese as default.
 
 ```json
     "language_type": "zh",

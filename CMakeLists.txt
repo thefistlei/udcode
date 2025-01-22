@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 3.10)
-project(MyProject)
+project(udcode)
 
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
@@ -9,15 +9,17 @@ if(MSVC)
     set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} /utf-8")
 endif()
 
-# 添加头文件搜索路径
-include_directories(include) # 包含项目自身的头文件
-include_directories(include/curl) # 包含 curl 的头文件
+# add the curl library
+include_directories(third-party) # include the curl header files
+include_directories(third-party/include) # include the curl header files
+include_directories(third-party/include/curl) # include the curl header files
+include_directories(third-party/nlohmannjson) # include the json header files
 
-# 设置库文件搜索路径
-link_directories(lib)
+# set the path to the curl library
+link_directories(third-party/lib)
 
-# 查找 curl 库
-find_library(CURL_LIBRARY NAMES curl PATHS lib NO_DEFAULT_PATH)
+# find the curl library
+find_library(CURL_LIBRARY NAMES curl PATHS third-party/lib NO_DEFAULT_PATH)
 
 if(CURL_LIBRARY)
     message(STATUS "Found curl library: ${CURL_LIBRARY}")
@@ -25,8 +27,25 @@ else()
     message(FATAL_ERROR "curl library not found!")
 endif()
 
-# 创建可执行目标
-add_executable(MyProject main.cpp read-file.cpp http.cpp)
+add_executable(udcode main.cpp read-file.cpp curl-http.cpp util.cpp settings.cpp)
 
-# 链接 curl 库
-target_link_libraries(MyProject ${CURL_LIBRARY})
+target_link_libraries(udcode ${CURL_LIBRARY})
+
+# copy the dll to the build directory
+if(WIN32)
+    if(EXISTS "${CMAKE_SOURCE_DIR}/third-party/lib/libcurl-d.dll")
+        add_custom_command(TARGET udcode POST_BUILD
+            COMMAND ${CMAKE_COMMAND} -E copy_if_different
+            "${CMAKE_SOURCE_DIR}/third-party/lib/zlibd1.dll"
+            $<TARGET_FILE_DIR:udcode>/zlibd1.dll
+        )
+        add_custom_command(TARGET udcode POST_BUILD
+            COMMAND ${CMAKE_COMMAND} -E copy_if_different
+            "${CMAKE_SOURCE_DIR}/third-party/lib/libcurl-d.dll"
+            $<TARGET_FILE_DIR:udcode>/libcurl-d.dll
+        )
+        message(STATUS "dll copied to the build directory.")
+    else()
+        message(WARNING "dll not found, skipping copy.")
+    endif()
+endif()

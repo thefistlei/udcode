@@ -1,14 +1,10 @@
 #pragma once
+#include <string>
 #include <vector>
-#include <memory>
-#include <iostream>
-#include <filesystem>
+#include <unordered_map>
 
-namespace ss
+namespace ss::read_file
 {
-    namespace ext_api_unc
-    {
-        auto process_cpp_files(const std::string& dir_path) -> void;
-    }
+    auto process_cpp_files(const std::string& dir_path, std::vector<std::pair<std::string, std::string>>& requests, std::vector<std::string>& files) -> void;
 }
 

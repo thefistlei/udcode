@@ -1,0 +1,14 @@
+{
+    "source_file_value": {
+        ".c": "c",
+        ".cpp": "cpp",
+        ".py": "py",
+        ".java": "java",
+        ".rs": "rust"
+    },
+    "language_type": "zh",
+    "language_value": {
+        "zh": "以中文回答, 解释下面代码",
+        "en": "explain the code"
+    }
+}

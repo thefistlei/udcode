@@ -1,0 +1,11 @@
+!/build/
+!/.vscode/
+
+
+!/.git?*
+
+/build/*
+/build/.*
+
+/.vscode/*
+/.vscode/.*

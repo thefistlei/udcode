@@ -27,7 +27,7 @@ else()
     message(FATAL_ERROR "curl library not found!")
 endif()
 
-add_executable(udcode main.cpp read-file.cpp curl-http.cpp util.cpp settings.cpp)
+add_executable(udcode src/main.cpp src/read-file.cpp src/curl-http.cpp src/util.cpp src/settings.cpp)
 
 target_link_libraries(udcode ${CURL_LIBRARY})
 

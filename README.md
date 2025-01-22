@@ -2,10 +2,7 @@
 UD Code, powered by ollama LLM, performs automated source code analysis. It recursively traverses a given directory, reads each source code file, and queries the LLM with the code for interpretation. The generated documentation is saved as Markdown files mirroring the original file.
 
 ## Installation
-On windows, run generate_sln.bat.
-
-## Documentation
-First, installation [ollama](https://github.com/ollama/ollama) on local mathine, then run udcode.
+First, installation [ollama](https://github.com/ollama/ollama) on local mathine. On windows, run `generate_sln.bat` to build. Run udcode.
 
 ```cpp
 .\udcode "e:/test"
@@ -16,6 +13,7 @@ First, installation [ollama](https://github.com/ollama/ollama) on local mathine,
 ## Example
 ![avatar](https://github.com/thefistlei/uncode/blob/main/example.jpg)
 
+## Documentation
 - To support more source file type, modify the JSON Configuration File `config.json`.
 For `language_type`, the key is the file extension, the value is the md code format.
 

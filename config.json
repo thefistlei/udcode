@@ -1,6 +1,7 @@
 {
     "source_file_value": {
         ".c": "c",
+        ".cc": "cpp",
         ".cpp": "cpp",
         ".py": "py",
         ".java": "java",
